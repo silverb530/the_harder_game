@@ -126,6 +126,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="testCpp.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameSystem.h" />
+    <ClInclude Include="Types.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
