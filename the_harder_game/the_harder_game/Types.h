@@ -1,4 +1,4 @@
-
+#pragma once
 // 공통 기반
 struct Point {
     float x, y;
