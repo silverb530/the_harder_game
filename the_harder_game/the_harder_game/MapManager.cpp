@@ -376,7 +376,7 @@ void MapManager::RenderMap() {
 
     // HUD 추가 (끝에 공백을 넣어 너비를 맞춤)
     char hud1[512];
-    sprintf(hud1, " STAGE %d: mo (MOH)   Deaths: %03d   Level: %d", currentStageNum, deaths, currentStageNum);
+    sprintf(hud1, " STAGE %d: mo (MOH)   Deaths: %03d   Level: %d    Pos: (%02d, %03d)", currentStageNum, deaths, currentStageNum, playerR, playerC);
     std::string line1 = hud1;
     screen += "\033[44m\033[97m" + line1;
     for (int i = 0; i < screenWidth - (int)line1.length(); i++) screen += " ";
