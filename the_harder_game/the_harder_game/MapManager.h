@@ -33,6 +33,7 @@ private:
     static int stage1[LH][LW];
     static int stage2[LH][LW];
     static int stage3[LH][LW];
+    static int stage4[LH][LW];
     int deaths;
     Obs obsList[OBS_COUNT];
 
@@ -50,4 +51,5 @@ public:
         playerR = r; playerC = c; hasKey1 = k1; hasKey2 = k2;
     }
 };
+
 #endif
