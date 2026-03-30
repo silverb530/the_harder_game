@@ -396,14 +396,47 @@ void MapManager::MovePlayer(int dr, int dc) {
     // 범위 체크
     if (nr < 0 || nr >= LH || nc < 0 || nc >= LW) return;
 
-    int tile = mapData[nr][nc];
+    int& tile = mapData[nr][nc];
+
+    // ★ 4. 순간이동(워프) 체크 (벽 체크보다 먼저 실행!)
+    // ㅂ 구역 오른쪽 아래 (17행 73열)에 도착하면
+    if (nr == 17 && nc == 73) {
+        playerR = 19; // ㅡ 구역 시작 행
+        playerC = 15; // ㅡ 구역 시작 열 (15가 벽일 수 있으니 16~17 추천)
+        return; // 좌표 변경 후 즉시 종료
+    }
+
+    if (nr == 27 && nc == 27) { // ㄹ에서 ㅡ로 올라온다
+        playerR = 24;
+        playerC = 96;
+        return;
+    }
+
+    if (nr == 19 && nc == 58)
+    {
+        playerR = 5;
+        playerC = 56;
+        return;
+    }
+
+    if (nr == 24 && nc == 96) {
+        playerR = 27;
+        playerC = 26;
+        return;
+    }
 
     // 벽이면 이동 불가
     if (tile == _W) return;
 
-    // 열쇠 없이 문 진입 불가
-    if (tile == _D1 && !hasKey1) return;
-    if (tile == _D2 && !hasKey2) return;
+    // 문 상호작용: 열쇠가 있으면 문을 바닥으로 바꾸고 통과
+    if (tile == _D1) {
+        if (hasKey1) tile = _L;
+        else return;
+    }
+    if (tile == _D2) {
+        if (hasKey2) tile = _L;
+        else return;
+    }
 
     // 열쇠 획득
     if (tile == _K1) { hasKey1 = true; mapData[nr][nc] = _L; }
