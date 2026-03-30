@@ -7,7 +7,7 @@
 #include "MapManager.h"
 
 int main() {
-    system("mode con cols=270 lines=55");
+    system("mode con cols=270 lines=80");
 
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 
