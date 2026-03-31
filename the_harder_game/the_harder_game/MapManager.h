@@ -13,6 +13,8 @@ enum TileType { _W = 0, _L = 1, _S = 2, _E = 3, _K1 = 4, _K2 = 5, _D1 = 6, _D2 =
 struct Obs {
     int r, c, dr, dc;
     int minR, maxR, minC, maxC;
+    int speed; // ★ 속도 (1: 제일 빠름, 2: 2배 느림, 3: 3배 느림...)
+    int tick;  // ★ 내부 타이머 (이동 타이밍 계산용)
 };
 
 struct StageInfo {
@@ -34,6 +36,7 @@ private:
     static int stage2[LH][LW];
     static int stage3[LH][LW];
     static int stage4[LH][LW];
+    static int stage5[LH][LW];
     int deaths;
     Obs obsList[OBS_COUNT];
 
