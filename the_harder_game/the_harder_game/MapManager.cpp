@@ -491,31 +491,61 @@ void MapManager::MovePlayer(int dr, int dc) {
 
     int& tile = mapData[nr][nc];
 
-    // ★ 4. 순간이동(워프) 체크 (벽 체크보다 먼저 실행!)
-    // ㅂ 구역 오른쪽 아래 (17행 73열)에 도착하면
-    if (nr == 17 && nc == 73) {
-        playerR = 19; // ㅡ 구역 시작 행
-        playerC = 15; // ㅡ 구역 시작 열 (15가 벽일 수 있으니 16~17 추천)
-        return; // 좌표 변경 후 즉시 종료
-    }
-
-    if (nr == 27 && nc == 27) { // ㄹ에서 ㅡ로 올라온다
-        playerR = 24;
-        playerC = 96;
-        return;
-    }
-
-    if (nr == 19 && nc == 58)
+    if (currentStageNum == 1)
     {
-        playerR = 5;
-        playerC = 56;
-        return;
+        if ((nr >= 40 && nr <= 45) && nc == 87)
+        {
+            LoadStage(2);
+
+            return;
+        }
     }
 
-    if (nr == 24 && nc == 96) {
-        playerR = 27;
-        playerC = 26;
-        return;
+
+    if (currentStageNum == 2)
+    {
+        // ★ 4. 순간이동(워프) 체크 (벽 체크보다 먼저 실행!)
+    // ㅂ 구역 오른쪽 아래 (17행 73열)에 도착하면
+        if (nr == 17 && nc == 73) {
+            playerR = 19; // ㅡ 구역 시작 행
+            playerC = 15; // ㅡ 구역 시작 열 (15가 벽일 수 있으니 16~17 추천)
+            return; // 좌표 변경 후 즉시 종료
+        }
+
+        if (nr == 27 && nc == 27) { // ㄹ에서 ㅡ로 올라온다
+            playerR = 24;
+            playerC = 96;
+            return;
+        }
+
+        if (nr == 19 && nc == 58)
+        {
+            playerR = 5;
+            playerC = 56;
+            return;
+        }
+
+        if (nr == 24 && nc == 96) {
+            playerR = 27;
+            playerC = 26;
+            return;
+        }
+
+        if ((nr >= 43 && nr <= 48) && nc == 83)
+        {
+            LoadStage(3);
+
+            return;
+        }
+    }
+
+    if (currentStageNum == 3)
+    {
+        if ((nr == 42 && nc == 89) || (nr == 41 && nc == 89))
+        {
+            LoadStage(4);
+            return;
+        }
     }
 
     // 벽이면 이동 불가
