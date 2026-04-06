@@ -36,9 +36,6 @@ void PlayerManager::Update() {
 
         SetCursorPosition((int)player.pos.x, (int)player.pos.y);
         cout << "  "; // 공백 두개로 'P '를 지움
-
-        // 미션: 규태님이 만드신 MapManager의 CanMove(nextX, nextY)를 호출해야 함
-        // 여기서는 예시로 내부 함수를 호출하는 구조로 짰습니다.
         if (CanMove(nextX, nextY)) {
             player.pos.x = nextX;
             player.pos.y = nextY;
@@ -54,8 +51,8 @@ void PlayerManager::Render() {
     cout << "P ";
 }
 
-bool PlayerManager::CanMove(float nextX, float nextY) {
-    // 맵만들면 연동해야 될부분
+bool PlayerManager::CanMove(float nextX, float nextY) 
+{
 // 화면 경계체크(임시 벽)
     if (nextX < 0 || nextY < 0 || nextX > 20 || nextY>20) return false;
     return true;
