@@ -37,7 +37,7 @@ int main() {
     }
 
     MapManager mapMgr;
-    mapMgr.LoadStage(5);
+    mapMgr.LoadStage(6);
 
     // 초기 화면 렌더링
     mapMgr.RenderMap();

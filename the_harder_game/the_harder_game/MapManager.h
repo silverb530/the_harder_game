@@ -13,7 +13,7 @@
 enum TileType {
     _W = 0, _L = 1, _S = 2, _E = 3,
     _K1 = 4, _K2 = 5, _K3 = 6, _K4 = 7, _K5 = 8,
-    _D1 = 9, _D2 = 10, _D3 = 11, _D4 = 12, _D5 = 13
+    _D1 = 9, _D2 = 10, _D3 = 11, _D4 = 12, _D5 = 13, _EXIT = 14
 };
 
 struct Obs {
@@ -52,13 +52,17 @@ private:
     static int stage3[LH][LW];
     static int stage4[LH][LW];
     static int stage5[LH][LW];
+    static int stage6[LH][LW];
     int deaths;
+    int stage6HorizonR; // 스테이지6 진입 시 고정된 하늘/땅 경계 행
     Obs obsList[OBS_COUNT];
     RotObs rotObsList[ROT_OBS_COUNT];
     int rotObsCount;
 public:
     MapManager();
     void LoadStage(int stageNum);
+    // 엔딩 문구를 출력하기 위한 함수
+    void PrintEndingMessage();
     void RenderMap(); // ★ 합쳐질 렌더링 함수
     void UpdateObstacles();
     void MovePlayer(int dr, int dc);
@@ -69,6 +73,9 @@ public:
     void UpdatePlayerState(int r, int c, bool k1, bool k2) {
         playerR = r; playerC = c; hasKey1 = k1; hasKey2 = k2;
     }
+    void DrawPixelCloud(int r, int c, bool isBig);
+    // MapManager.h 내 public 혹은 private 영역
+    void VerticalOpenAnimation(int startR, int startC);
 };
 
 #endif

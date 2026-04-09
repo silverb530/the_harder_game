@@ -19,7 +19,7 @@
 #define BG_OBS   "\033[48;5;12m"
 
 
-MapManager::MapManager() : currentStageNum(1), playerR(0), playerC(0), deaths(0), hasKey1(false), hasKey2(false) {
+MapManager::MapManager() : currentStageNum(1), playerR(0), playerC(0), deaths(0), stage6HorizonR(34), hasKey1(false), hasKey2(false) {
     mapData = stage1;
     Obs init[] = {
         {3,42,0,1,2,4,41,46}, {3,67,0,1,2,4,65,70},
@@ -513,15 +513,43 @@ void MapManager::LoadStage(int stageNum) {
             }
         }
     }
+    if (stageNum == 6) {
+        mapData = stage6;
+
+        for (int r = 0; r < LH; r++) {
+            for (int c = 0; c < LW; c++) {
+                if (r >= 35) {
+                    // 아래쪽은 잔디밭 (원래 벽이었던 0을 사용)
+                    stage6[r][c] = 0;
+                }
+                else {
+                    // 위쪽은 하늘 (원래 길이었던 1을 사용)
+                    stage6[r][c] = 1;
+                }
+            }
+        }
+
+        // 플레이어 시작 위치
+        playerR = 34;
+        playerC = 10;
+        stage6HorizonR = 34; // ★ 경계선 고정값 (절대 변하지 않음)
+        stage6[playerR][playerC] = 2; // S
+
+        stage6[34][110] = 3; // E (문)
+
+        // 장애물 비우기
+        for (int i = 0; i < OBS_COUNT; i++) obsList[i] = { -1, -1, 0, 0, 0, 0, 0, 0 };
+        rotObsCount = 0;
+    }
     for (int r = 0; r < LH; r++) {
         for (int c = 0; c < LW; c++) {
-            if (mapData[r][c] == _S) {
+            if (mapData[r][c] == 2) {
                 playerR = r;
                 playerC = c;
-                return;
             }
         }
     }
+
 }
 
 
@@ -572,8 +600,46 @@ void MapManager::RenderMap() {
             if (isRotObs) continue;
             int tile = mapData[r][c];
             switch (tile) {
-            case _W:  screen += BG_WALL "  " RESET; break;
-            case _L:  screen += ((r + c) % 2 == 0) ? BG_FL1 FG_DOT "  " RESET : BG_FL2 FG_DOT "  " RESET; break;
+            case _W:
+                if (currentStageNum == 6) {
+                    if (r <= stage6HorizonR) {
+                        screen += "\033[48;5;117m  " RESET;
+                    }
+                    else {
+                        // [핵심] 좌표값에 시간을 더하되, 아주 큰 수(예: 2000)로 나눠서 속도를 늦춥니다.
+                        // 숫자가 커질수록(2000 -> 5000) 더 천천히 바뀝니다.
+                        int slowTime = GetTickCount() / 2000;
+                        int seed = (r * 7 + c * 13 + slowTime);
+
+                        if (seed % 101 == 0) { // 약 1% 확률로 빨간 꽃
+                            screen += "\033[48;5;120m\033[38;5;196m@ " RESET;
+                        }
+                        else if (seed % 71 == 0) { // 약 1.4% 확률로 노란 꽃
+                            screen += "\033[48;5;120m\033[38;5;220m* " RESET;
+                        }
+                        else if (seed % 31 == 0) { // 약 3% 확률로 풀
+                            screen += "\033[48;5;120m\033[38;5;28m\" " RESET;
+                        }
+                        else {
+                            screen += "\033[48;5;120m  " RESET;
+                        }
+                    }
+                }
+                else {
+                    screen += BG_WALL "  " RESET;
+                }
+                break;
+            case _L:
+                if (currentStageNum == 6) {
+                    if (r <= stage6HorizonR)
+                        screen += "\033[48;5;117m  " RESET; // 하늘색
+                    else
+                        screen += "\033[48;5;120m  " RESET; // 연한 초록색
+                }
+                else {
+                    screen += ((r + c) % 2 == 0) ? BG_FL1 FG_DOT "  " RESET : BG_FL2 FG_DOT "  " RESET;
+                }
+                break;
             case _S:  screen += BG_GREEN FG_WHITE "_S" RESET; break;
             case _E:  screen += BG_L_RED FG_BLACK "  " RESET; break;
             case _K1: screen += BG_YELL FG_BLACK "  " RESET; break;
@@ -582,7 +648,17 @@ void MapManager::RenderMap() {
             case _K4: screen += BG_YELL FG_BLACK "  " RESET; break;
             case _K5: screen += BG_YELL FG_BLACK "  " RESET; break;
             case _D1: case _D2:case _D3: case _D4:case _D5: screen += BG_BLUE FG_WHITE "▒▒" RESET; break;
-            default:  screen += BG_WALL "  " RESET; break;
+            default:
+                if (currentStageNum == 6) {
+                    if (r <= stage6HorizonR)
+                        screen += "\033[48;5;117m  " RESET; // 하늘색
+                    else
+                        screen += "\033[48;5;120m  " RESET; // 연한 초록색
+                }
+                else {
+                    screen += BG_WALL "  " RESET;
+                }
+                break;
             }
         }
         screen += "\n";
@@ -620,6 +696,124 @@ void MapManager::RenderMap() {
     screen += "\033[0m\n";
 
     printf("%s", screen.c_str());
+
+    // ★ 스테이지 6 엔딩 메시지 (맵 위에 오버레이 - 화면 정중앙)
+    if (currentStageNum == 6) {
+        int mR = 13;
+        int mC = 92;
+
+        // --- 1. 하늘 구름들 (군데군데 배치) ---
+    // [큰 구름 1 - 왼쪽 상단]
+        DrawPixelCloud(3, 20, true);
+        // [작은 구름 1 - 중앙 상단]
+        DrawPixelCloud(5, 70, false);
+        // [큰 구름 2 - 우측 상단]
+        DrawPixelCloud(4, 160, true);
+        // [작은 구름 2 - 우측 끝]
+        DrawPixelCloud(7, 210, false);
+        // [작은 구름 3 - 박스 아래 살짝 왼쪽]
+        DrawPixelCloud(28, 50, false);
+
+        // --- 문 위치 설정 ---
+        int doorR = 31;
+        int doorC = 217;
+
+        // 1. 문 상단 (고동색 10칸) - 양옆 여백 없이 문 너비만 딱 출력
+        printf("\033[%d;%dH\033[48;5;52m          \033[0m", doorR, doorC);
+
+        // 2. 문 본체 (6줄)
+        for (int i = 1; i <= 6; i++) {
+            printf("\033[%d;%dH", doorR + i, doorC);
+            if (i == 3) {
+                // 손잡이 'oo' (갈색4 + 노란oo + 갈색4 = 총 10칸)
+                printf("\033[48;5;94m    \033[38;5;220moo\033[48;5;94m    \033[0m");
+            }
+            else {
+                // 일반 갈색 몸통 (10칸)
+                printf("\033[48;5;94m          \033[0m");
+            }
+        }
+
+
+
+        // ┌─ 상단 테두리 (요청하신 갈색 유지) ─────────────────────┐
+        printf("\033[%d;%dH\033[48;5;17m\033[1;38;5;220m"
+            "★★★★★★★★★★★★★★★★★★★★★★★★★★★★"
+            "\033[0m", mR, mC);
+
+        // │ 빈 줄 │
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "                                                      "
+            "║\033[0m", mR + 1, mC);
+
+        // │ 메인 타이틀 │
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "\033[1;38;5;51m   🏆   "
+            "\033[1;38;5;255m 전 설 의  취 업 자  탄 생 ! !        "
+            "\033[1;38;5;51m   🏆   "
+            "\033[38;5;220m║\033[0m", mR + 2, mC);
+
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "\033[1;38;5;226m  ★     "
+            "\033[1;38;5;231m YOU ARE THE MASTER OF SURVIVAL "
+            "\033[1;38;5;226m         ★  "
+            "\033[38;5;220m║\033[0m", mR + 3, mC);
+
+        // │ 빈 줄 │
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "                                                      "
+            "║\033[0m", mR + 4, mC);
+
+        // ├─ 구분선 ┤
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m"
+            "╠══════════════════════════════════════════════════════╣"
+            "\033[0m", mR + 5, mC);
+
+        // │ 서브 메시지 │
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "\033[0;38;5;195m  수많은 탈락의 고통을 딛고 마침내 합격하셨습니다.    "
+            "\033[38;5;220m║\033[0m", mR + 6, mC);
+
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "\033[0;38;5;159m  당신의 끈기와 컨트롤은 '진짜'임을 증명했습니다.     "
+            "\033[38;5;220m║\033[0m", mR + 7, mC);
+
+        // ├─ 구분선 ┤
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m"
+            "╠══════════════════════════════════════════════════════╣"
+            "\033[0m", mR + 8, mC);
+
+        // │ 통계 (사망 횟수) │
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "\033[1;38;5;203m    💀  영광의 상처 (Total Deaths) : %4d 번        "
+            "\033[38;5;220m  ║\033[0m", mR + 9, mC, deaths);
+
+        // ├─ 구분선 ┤
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m"
+            "╠══════════════════════════════════════════════════════╣"
+            "\033[0m", mR + 10, mC);
+
+        // │ 하단 안내 │
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "\033[0;38;5;229m  [!] 중앙의 포탈을 밟으면 전설이 다시 시작됩니다.    "
+            "\033[38;5;220m║\033[0m", mR + 11, mC);
+
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "\033[0;38;5;229m  [!] Step on the Portal to become a Legend again.    "
+            "\033[38;5;220m║\033[0m", mR + 12, mC);
+
+        // │ 빈 줄 │
+        printf("\033[%d;%dH\033[48;5;17m\033[38;5;220m║"
+            "                                                      "
+            "║\033[0m", mR + 13, mC);
+
+        // └─ 하단 테두리 ┘
+        printf("\033[%d;%dH\033[48;5;17m\033[1;38;5;220m"
+            "╚══════════════════════════════════════════════════════╝"
+            "\033[0m", mR + 14, mC);
+
+        printf("\033[1;1H");
+    }
 }
 
 void MapManager::UpdateObstacles() {
@@ -783,6 +977,19 @@ void MapManager::MovePlayer(int dr, int dc) {
         }
     }
 
+    if (currentStageNum == 4)
+    {
+        if (nr == 18 && nc == 50) {
+            playerR = 18;
+            playerC = 104;
+            return;
+        }
+        if (nr == 40 && (nc >= 82 && nc <= 91))
+        {
+            LoadStage(5);
+            return;
+        }
+    }
 
     if (currentStageNum == 5) {
         // 1번 열쇠(K1) 좌표 도착 -> 1번 문(D1) 개방 이벤트!
@@ -820,6 +1027,22 @@ void MapManager::MovePlayer(int dr, int dc) {
             return;
         }
     }
+    // ★ 스테이지 6에서 포탈(14)을 밟았을 때
+    if (currentStageNum == 6) {
+        if (nr == 34 && nc == 110) {
+            // 1. 플레이어 위치 이동 및 현재 상태 렌더링
+            playerR = nr;
+            playerC = nc;
+            RenderMap();
+
+            // 2. 아래에서 위로 지워지는 애니메이션 실행 (문 위치 34, 217)
+            VerticalOpenAnimation(31, 217);
+
+            // 3. 애니메이션 완료 후 다음 스테이지로 이동
+            LoadStage(1);
+            return;
+        }
+    }
     playerR = nr;
     playerC = nc;
 }
@@ -837,9 +1060,53 @@ void MapManager::OpenDoorAnimation(int doorType) {
 }
 bool MapManager::CanMove(int x, int y) {
     if (x < 0 || x >= LW || y < 0 || y >= LH) return false;
+    if (currentStageNum == 6) return true;
     return mapData[y][x] != _W;
 }
 
 int MapManager::GetTile(int x, int y) const {
     return mapData[y][x];
+}
+
+// 스테이지 6 데이터 정의 (간단한 빈 방 형태)
+int MapManager::stage6[LH][LW] = {
+    0
+};
+
+void MapManager::PrintEndingMessage() {
+    // 엔딩 메시지는 RenderMap() 내부에서 처리합니다.
+    // 별도 호출 시에도 RenderMap을 통해 출력되도록 위임합니다.
+    if (currentStageNum == 6) {
+        RenderMap();
+    }
+}
+
+// 구름을 그려주는 헬퍼 함수
+void MapManager::DrawPixelCloud(int r, int c, bool isBig) {
+    if (isBig) {
+        printf("\033[%d;%dH\033[48;5;153m      \033[48;5;255m    \033[48;5;153m      ", r, c);
+        printf("\033[%d;%dH\033[48;5;153m  \033[48;5;255m          \033[48;5;252m  \033[48;5;153m  ", r + 1, c);
+        printf("\033[%d;%dH\033[48;5;255m            \033[48;5;252m    \033[48;5;153m", r + 2, c);
+        printf("\033[%d;%dH\033[48;5;153m  \033[48;5;255m    \033[48;5;252m        \033[48;5;153m  ", r + 3, c);
+    }
+    else {
+        printf("\033[%d;%dH\033[48;5;153m    \033[48;5;255m    \033[48;5;153m    ", r, c);
+        printf("\033[%d;%dH\033[48;5;153m\033[48;5;255m        \033[48;5;252m  \033[48;5;153m", r + 1, c);
+        printf("\033[%d;%dH\033[48;5;153m  \033[48;5;255m  \033[48;5;252m    \033[48;5;153m  ", r + 2, c);
+    }
+    printf("\033[0m");
+}
+
+void MapManager::VerticalOpenAnimation(int startR, int startC) {
+    // 문 너비가 10칸이므로 지울 때도 10칸을 지웁니다.
+    for (int r = startR + 6; r >= startR; r--) {
+        // 해당 줄을 검정색 공백 10칸으로 완전히 지움
+        printf("\033[%d;%dH\033[48;5;0m          \033[0m", r, startC);
+
+        // 플레이어 유지
+        printf("\033[%d;%dH\033[1;37mP\033[0m", playerR + 1, playerC + 1);
+
+        printf("\033[1;1H");
+        Sleep(100);
+    }
 }
