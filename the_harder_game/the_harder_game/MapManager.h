@@ -4,7 +4,7 @@
 
 #define LH 50
 #define LW 120
-#define OBS_COUNT 100
+#define OBS_COUNT 255
 #define ROT_OBS_COUNT 400
 
 #include "Types.h"
