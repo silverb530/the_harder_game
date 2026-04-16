@@ -51,6 +51,12 @@
     <ClCompile Include="MapManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Screenbuffer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Mainmenu.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Types.h">
@@ -66,6 +72,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MapManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Screenbuffer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Mainmenu.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -124,9 +124,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mainmenu.cpp" />
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Render.cpp" />
+    <ClCompile Include="Screenbuffer.cpp" />
     <ClCompile Include="Stage_1.cpp" />
     <ClCompile Include="Stage_2.cpp" />
     <ClCompile Include="Stage_3.cpp" />
@@ -136,9 +138,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameSystem.h" />
+    <ClInclude Include="Mainmenu.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Render.h" />
+    <ClInclude Include="Screenbuffer.h" />
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
