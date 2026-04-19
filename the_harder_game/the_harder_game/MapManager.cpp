@@ -287,8 +287,8 @@ int MapManager::stage4[LH][LW] = {
     {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
     {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
     {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
-    {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
-    {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
+    {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_S,_S,_S,_S,_S,_S,_S,_S,_S,_S,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
+    {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_S,_S,_S,_S,_S,_S,_S,_S,_S,_S,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_L,_L,_L,_L,_L,_L,_L,_L,_L,_L,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
     {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
     {_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W,_W},
 };
@@ -358,6 +358,10 @@ void MapManager::LoadStage(int stageNum) {
     rotObsCount = 0;
     if (stageNum == 1) {
         mapData = stage1;
+        
+        // 은비 : 체이서 삭제
+        for (int i = 0; i < CHASER_COUNT; i++) chaserList[i].active = false;
+
         static int backupStage1[LH][LW];
         static bool isBackedUp = false;
         if (!isBackedUp) {
@@ -404,6 +408,9 @@ void MapManager::LoadStage(int stageNum) {
             obsList[i] = (i < cnt) ? init[i] : Obs{ -1,-1,0,0,0,0,0,0 };
     }
     else if (stageNum == 2) {
+        // 은비 : 체이서 삭제
+        for (int i = 0; i < CHASER_COUNT; i++) chaserList[i].active = false;
+
         mapData = stage2;
         Obs init[] = {
        {3, 42, 0, 1}, {3, 46, 0, -1}, {7, 45, 0, 1}, {7, 60, 0, -1}, {9, 50, 0, 1},
@@ -432,6 +439,9 @@ void MapManager::LoadStage(int stageNum) {
     }
     else if (stageNum == 3)
     {
+        // 은비 : 체이서 삭제
+        for (int i = 0; i < CHASER_COUNT; i++) chaserList[i].active = false;
+
         mapData = stage3;
         static int backupStage3[LH][LW];
         static bool isBackedUp = false;
@@ -541,14 +551,72 @@ void MapManager::LoadStage(int stageNum) {
     }
     else if (stageNum == 4)
     {
+
         mapData = stage4;
-        for (int i = 0; i < OBS_COUNT; i++) {
-            obsList[i] = { -1, -1, 0, 0, 0, 0, 0, 0 };
+
+        bool wasInRight = stage4RightEntered;
+
+        static int backupStage4[LH][LW];
+        static bool isBackedUp4 = false;
+        if (!isBackedUp4) {
+            for (int r = 0; r < LH; r++)
+                for (int c = 0; c < LW; c++)
+                    backupStage4[r][c] = stage4[r][c];
+            isBackedUp4 = true;
         }
+
+        if (!wasInRight) {
+            // 좌측이거나 완전 리셋: 원본 복구 + 키/맵 초기화
+            for (int r = 0; r < LH; r++)
+                for (int c = 0; c < LW; c++)
+                    stage4[r][c] = backupStage4[r][c];
+            for (int i = 0; i < 6; i++) hasKey[i] = false;
+            stage4[5][28] = 7;
+        }
+        else {
+            // 우측에서 죽음: 공통 초기화가 날린 hasKey를 복구
+            hasKey[0] = true;
+            hasKey[1] = true;
+            hasKey[2] = true;
+        }
+        // 4. 장애물 세팅: 쾌속 파도 + 하단 격자 패턴
+        Obs init[] = {
+            {}
+            //{5, 28, 1, 0, 5, 38, 28, 28, 1}, {38, 29, -1, 0, 5, 38, 29, 29, 1},
+            //{5, 30, 1, 0, 5, 38, 30, 30, 1}, {38, 31, -1, 0, 5, 38, 31, 31, 1},
+            //{5, 32, 1, 0, 5, 38, 32, 32, 1}, {38, 33, -1, 0, 5, 38, 33, 33, 1},
+            //{5, 34, 1, 0, 5, 38, 34, 34, 1}, {38, 35, -1, 0, 5, 38, 35, 35, 1},
+            //{5, 36, 1, 0, 5, 38, 36, 36, 1}, {38, 37, -1, 0, 5, 38, 37, 37, 1},
+            //// 하단 격자 장애물
+            //{18, 17, 1, 0, 18, 27, 17, 49, 3}, {19, 19, -1, 0, 18, 27, 17, 49, 3},
+            //{20, 21, 1, 0, 18, 27, 17, 49, 3}, {21, 23, -1, 0, 18, 27, 17, 49, 3},
+            //{22, 25, 1, 0, 18, 27, 17, 49, 3}, {23, 27, -1, 0, 18, 27, 17, 49, 3},
+            //{24, 29, 1, 0, 18, 27, 17, 49, 3}, {25, 31, -1, 0, 18, 27, 17, 49, 3},
+            //{26, 33, 1, 0, 18, 27, 17, 49, 3}, {27, 35, -1, 0, 18, 27, 17, 49, 3},
+            //{18, 37, 1, 0, 18, 27, 17, 49, 3}, {19, 39, -1, 0, 18, 27, 17, 49, 3},
+            //{20, 41, 1, 0, 18, 27, 17, 49, 3}, {21, 43, -1, 0, 18, 27, 17, 49, 3},
+            //{22, 45, 1, 0, 18, 27, 17, 49, 3}, {23, 47, -1, 0, 18, 27, 17, 49, 3},
+            //{24, 48, 1, 0, 18, 27, 17, 49, 3}, {25, 49, -1, 0, 18, 27, 17, 49, 3}
+        };
+        int cnt = sizeof(init) / sizeof(init[0]);
+        for (int i = 0; i < OBS_COUNT; i++) {
+            obsList[i] = (i < cnt) ? init[i] : Obs{ -1, -1, 0, 0, 0, 0, 0, 0, 1, 0 };
+        }
+
+        chaserList[0] = { 6.0f,  86.0f, 0.3f,  true, 0,  1 };
+        chaserList[1] = { 22.0f, 75.0f, 0.2f,  true, 1,  0 };
+        chaserList[2] = { 22.0f, 97.0f, 0.25f, true, 0, -1 };
+        chaserList[3] = { 10.0f, 83.0f, 0.28f, true, -1, 0 };
+        chaserList[4] = { 14.0f, 90.0f, 0.22f, true, 1,  0 };
+
     }
     else if (stageNum == 5)
     {
         mapData = stage5;
+
+        // 은비 : 체이서 삭제
+        for (int i = 0; i < CHASER_COUNT; i++) chaserList[i].active = false;
+        stage4RightEntered = false;
 
         for (int i = 0; i < 6; i++) hasKey[i] = false;
         static int backupStage5[LH][LW];
@@ -672,11 +740,11 @@ void MapManager::RenderMap() {
     sb.FillRect(0, 2, ScreenBuffer::W, LH, L' ', ATTR(CC_WHITE, CC_MAG));
 
     // 2. HUD 렌더링 (상단 1, 2행)
-    sb.FillRow(0, ATTR(CC_WHITE, CC_DKBLUE));
-    wchar_t hud1[512];
-    swprintf(hud1, 512, L" STAGE %d   Deaths: %03d   Level: %d    Pos: (%02d, %03d)",
-        currentStageNum, gs.GetTotalDeaths(), currentStageNum, playerR, playerC);
-    sb.PutStrW(0, 0, hud1, ATTR(CC_WHITE, CC_DKBLUE));
+    //sb.FillRow(0, ATTR(CC_WHITE, CC_DKBLUE));
+    //wchar_t hud1[512];
+    //swprintf(hud1, 512, L" STAGE %d   Deaths: %03d   Level: %d    Pos: (%02d, %03d)",
+    //    currentStageNum, gs.GetTotalDeaths(), currentStageNum, playerR, playerC);
+    //sb.PutStrW(0, 0, hud1, ATTR(CC_WHITE, CC_DKBLUE));
 
     sb.FillRow(1, ATTR(CC_CYAN, CC_DKBLUE));
     sb.PutStrW(1, 1, L" WORLD'S HARDEST JOB HUNT", ATTR(CC_CYAN, CC_DKBLUE));
@@ -714,7 +782,21 @@ void MapManager::RenderMap() {
                 case _K1: case _K2: case _K3: case _K4: case _K5: attr = ATTR(CC_DKYEL, CC_YELLOW); break;
                 case _D1: case _D2: case _D3: case _D4: case _D5:
                     c1 = L'\u2592'; c2 = L'\u2592'; attr = ATTR(CC_CYAN, CC_BLUE); break;
+
                 }
+            }
+
+            // 은비 - stage4 세이브존 추가
+            if (currentStageNum == 4 && tile == _L) {
+                if ((r == 22 && c == 103) ||
+                    (r == 22 && c == 71) ||
+                    (r == 22 && c == 86) ||
+                    (r == 10 && c == 86) ||
+                    (r == 33 && c == 86)) {
+                    attr = ATTR(CC_BLACK, CC_DKGREEN);
+                    c1 = L'S'; c2 = L'Z';
+                }
+
             }
 
             // --- [B] 배경 위에 덮어쓰기 (장애물 및 플레이어) ---
@@ -727,6 +809,15 @@ void MapManager::RenderMap() {
             if (!isObs) {
                 for (int i = 0; i < rotObsCount; ++i) {
                     if (rotObsList[i].r == r && rotObsList[i].c == c) { isObs = true; break; }
+                }
+            }
+
+            if (!isObs && currentStageNum == 4) {
+                for (int i = 0; i < CHASER_COUNT; i++) {
+                    if (!chaserList[i].active) continue;
+                    int cr = (int)round(chaserList[i].r);
+                    int cc = (int)round(chaserList[i].c);
+                    if (cr == r && cc == c) { isObs = true; break; }
                 }
             }
 
@@ -786,7 +877,7 @@ void MapManager::RenderMap() {
         hasKey[5] ? L"[YES]" : L"[ NO ]");
     sb.PutStrW(0, footY + 2, invBuf, ATTR(CC_GREEN, CC_BLACK));
 
-    sb.Flip();
+    //sb.Flip();
 }
 
 void MapManager::UpdateObstacles() {
@@ -866,11 +957,113 @@ void MapManager::UpdateObstacles() {
         if (rotObsList[i].r == playerR && rotObsList[i].c == playerC) {
             bool isGameOver = gs.OnPlayerDeath(); // ★ GameSystem 에 위임
             if (!isGameOver) {
-                LoadStage(currentStageNum); // 리스폰 (같은 스테이지)
+                LoadStage(currentStageNum); // 목숨 남음 → 리스폰, 체이서 유지
             }
+            else {
+                stage4RightEntered = false; // 15번 다 죽음 → 처음부터
+                gs.OnStageAdvance();
+                LoadStage(currentStageNum);
+            }
+
             return;
         }
     }
+
+    // ★ 체이서 업데이트 (stage4만)
+    if (currentStageNum == 4) {
+        chaserRandomTick++;
+
+        // 세이프존 정의 - 체이서가 절대 진입 못하는 구역
+        auto inZone = [](int r, int c) -> bool {
+            return
+                (r >= 18 && r <= 27 && c >= 104) || // ① 스타트 구역 (넉넉하게)
+                (r == 22 && c == 103) ||
+                (r == 22 && c == 71) ||
+                (r == 22 && c == 86) ||
+                (r == 10 && c == 86) ||
+                (r == 33 && c == 86);
+            };
+
+
+        // 플레이어가 좌측이거나 세이프존이면 랜덤이동 모드
+        bool inSafeZone = inZone(playerR, playerC) || (playerC < 60);
+
+        for (int i = 0; i < CHASER_COUNT; i++) {
+            if (!chaserList[i].active) continue;
+
+            if (inSafeZone) {
+                // 랜덤이동
+                if (chaserRandomTick % (15 + i * 7) == 0) {
+                    int dir = rand() % 4;
+                    chaserList[i].randomDR = (dir == 0) ? -1 : (dir == 1) ? 1 : 0;
+                    chaserList[i].randomDC = (dir == 2) ? -1 : (dir == 3) ? 1 : 0;
+                    if (chaserList[i].randomDR == 0 && chaserList[i].randomDC == 0)
+                        chaserList[i].randomDC = 1;
+                }
+
+                float newR = chaserList[i].r + chaserList[i].randomDR * chaserList[i].speed;
+                float newC = chaserList[i].c + chaserList[i].randomDC * chaserList[i].speed;
+                int nr = (int)round(newR);
+                int nc = (int)round(newC);
+
+                // ★ 세이프존 진입 금지 + 우측 구역 이탈 금지(c<60)
+                if (!inZone(nr, nc) && nc >= 60 && nr >= 0 && nr < LH && nc >= 0 && nc < LW && mapData[nr][nc] != _W) {
+                    chaserList[i].r = newR;
+                    chaserList[i].c = newC;
+                }
+                else {
+                    int dir = rand() % 4;
+                    chaserList[i].randomDR = (dir == 0) ? -1 : (dir == 1) ? 1 : 0;
+                    chaserList[i].randomDC = (dir == 2) ? -1 : (dir == 3) ? 1 : 0;
+                    if (chaserList[i].randomDR == 0 && chaserList[i].randomDC == 0)
+                        chaserList[i].randomDC = 1;
+                }
+            }
+            else {
+                // 추격
+                float dr = playerR - chaserList[i].r;
+                float dc = playerC - chaserList[i].c;
+                float dist = sqrt(dr * dr + dc * dc);
+
+                // ★ dist < 0.5f 이면 멈추지 말고 바로 사망 처리
+                if (dist < 0.5f) {
+                    bool isGameOver = gs.OnPlayerDeath();
+                    if (!isGameOver) LoadStage(currentStageNum);
+                    else {
+                        stage4RightEntered = false;
+                        gs.OnStageAdvance();
+                        LoadStage(4);
+                    }
+                    return;
+                }
+
+                float newR = chaserList[i].r + (dr / dist) * chaserList[i].speed;
+                float newC = chaserList[i].c + (dc / dist) * chaserList[i].speed;
+                int nr = (int)round(newR);
+                int nc = (int)round(newC);
+
+                // ★ 세이프존 + 우측 이탈 금지 체크를 이동 전에
+                if (!inZone(nr, nc) && nc >= 60 && nr >= 0 && nr < LH && nc >= 0 && nc < LW && mapData[nr][nc] != _W) {
+                    chaserList[i].r = newR;
+                    chaserList[i].c = newC;
+                }
+
+                int cr = (int)round(chaserList[i].r);
+                int cc = (int)round(chaserList[i].c);
+                if (cr == playerR && cc == playerC) {
+                    bool isGameOver = gs.OnPlayerDeath();
+                    if (!isGameOver) LoadStage(currentStageNum);
+                    else {
+                        stage4RightEntered = false;
+                        gs.OnStageAdvance();
+                        LoadStage(4);
+                    }
+                    return;
+                }
+            }
+        }
+    }
+
 }
 void MapManager::MovePlayer(int dr, int dc) {
     int nr = playerR + dr;
@@ -951,6 +1144,76 @@ void MapManager::MovePlayer(int dr, int dc) {
         }
     }
 
+    if (currentStageNum == 4)
+    {
+        // ── 좌측 구역 ──────────────────────────────────────
+        // [1단계] 첫 번째 키 먹으면 -> 두 번째 키 등장
+        if (!hasKey[0] && nr == 5 && nc == 28) {
+            hasKey[0] = true;
+            stage4[5][28] = _L;      // 현재 위치 바닥으로 복구
+            stage4[27][15] = _K2;      // 다음 키를 27, 15에 생성
+        }
+        // [2단계] 두 번째 키 체크 (위치: 27, 15로 일치시킴!)
+        else if (hasKey[0] && !hasKey[1] && nr == 27 && nc == 15) {
+            hasKey[1] = true;
+            stage4[27][15] = _L;     // 먹은 키 자리를 바닥으로 복구
+            stage4[38][37] = _K2;      // 다음 키를 38, 37에 생성
+        }
+        // [3단계] 세 번째 키 체크 (위치: 38, 37로 일치시킴!)
+        else if (hasKey[1] && !hasKey[2] && nr == 38 && nc == 37) {
+            hasKey[2] = true;
+            stage4[38][37] = _L;     // 바닥으로 복구
+
+            // 중간 문 뚫기 (38열에 있는 벽을 뚫음)
+            for (int r = 18; r <= 27; r++) {
+                stage4[r][50] = _D2;   // 0 혹은 _L (바닥 번호)
+            }
+
+            stage4[6][86] = _K2;       // 우측 첫 키 생성
+            
+        }
+        // 문(_D2)에 닿으면 우측 구역으로 텔레포트
+        if (stage4[nr][nc] == _D2) {
+            playerR = 22;
+            playerC = 104;
+            for (int r = 18; r <= 27; r++) stage4[r][104] = _S;
+
+            stage4RightEntered = true;  // ★ 추가
+
+            chaserList[0] = { 6.0f,  86.0f, 0.3f,  true, 0,  1 };
+            chaserList[1] = { 22.0f, 75.0f, 0.2f,  true, 1,  0 };
+            chaserList[2] = { 22.0f, 97.0f, 0.25f, true, 0, -1 };
+            chaserList[3] = { 10.0f, 83.0f, 0.28f, true, -1, 0 };
+            chaserList[4] = { 14.0f, 90.0f, 0.22f, true, 1,  0 };
+            return;
+        }
+
+        // ── 우측 구역 ──────────────────────────────────────
+        if (hasKey[2] && !hasKey[3] && nr == 6 && nc == 86) {  // ★ 키 놓은 좌표로!
+            hasKey[3] = true;
+            stage4[6][86] = _L;
+            stage4[26][75] = _K2;
+        }
+        else if (hasKey[3] && !hasKey[4] && nr == 26 && nc == 75) {
+            hasKey[4] = true;
+            stage4[26][75] = _L;
+            stage4[22][91] = _K2;
+        }
+
+        else if (hasKey[4] && !hasKey[5] && nr == 22 && nc == 91) {
+            hasKey[5] = true;
+            stage4[22][91] = _L;
+            stage4[40][87] = _E;
+        }
+
+        // ── 클리어 판정 ──────────────────────────────────────
+        if (stage4[nr][nc] == _E) {
+            gs.OnStageAdvance();
+            LoadStage(5);
+            return;
+        }
+    }
+
 
     if (currentStageNum == 5) {
         // 1번 열쇠(K1) 좌표 도착 -> 1번 문(D1) 개방 이벤트!
@@ -1019,6 +1282,7 @@ void MapManager::OpenDoorAnimation(int doorType) {
             if (mapData[r][c] == doorType) {
                 mapData[r][c] = _L;
                 RenderMap(); // 한 칸이 지워질 때마다 화면 업데이트
+                sb.Flip(); // ★ 여기서 직접 Flip
                 Sleep(30);   // 30ms 대기 (값이 클수록 더 천천히 스르륵 열림)
             }
         }
@@ -1082,3 +1346,6 @@ void MapManager::VerticalOpenAnimation(int startR, int startC) {
         Sleep(100);
     }
 }
+
+
+

@@ -44,6 +44,16 @@ struct StageInfo {
     int level;
 };
 
+// 체이서 구조체
+struct Chaser {
+    float r, c;
+    float speed;
+    bool active;
+    int randomDR = 0;  // ★ 추가
+    int randomDC = 1;  // ★ 추가 (초기 방향 오른쪽)
+};
+
+
 class MapManager {
 private:
     // 1. 맵 데이터 관련
@@ -72,6 +82,12 @@ private:
 
     // 5. ★ 게임 상태/사망 카운터 (GameSystem 에 위임)
     GameSystem gs;
+
+    // 6. 은비 - 쫓아오는 장애물 추가
+    #define CHASER_COUNT 5
+    Chaser chaserList[CHASER_COUNT];
+    bool stage4RightEntered = false;
+    int chaserRandomTick = 0;
 
 public:
     MapManager();
@@ -107,6 +123,7 @@ public:
     }
     void DrawPixelCloud(int r, int c, bool isBig);
     void VerticalOpenAnimation(int startR, int startC);
+
 };
 
 #endif
