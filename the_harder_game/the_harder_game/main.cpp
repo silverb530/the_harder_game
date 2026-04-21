@@ -106,8 +106,7 @@ int main() {
 
         MapManager mapMgr;
         mapMgr.InitBuffer(hOut);
-        //mapMgr.LoadStage(6); // ★ 항상 1스테이지부터 시작
-        mapMgr.LoadStage(3); // ★ 항상 1스테이지부터 시작
+        mapMgr.LoadStage(2); // ★ 항상 1스테이지부터 시작
 
         bool isPlaying = true;
         auto startTime = std::chrono::steady_clock::now();

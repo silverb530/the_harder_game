@@ -84,7 +84,7 @@ private:
     GameSystem gs;
 
     // 6. 은비 - 쫓아오는 장애물 추가
-    #define CHASER_COUNT 5
+#define CHASER_COUNT 5
     Chaser chaserList[CHASER_COUNT];
     bool stage4RightEntered = false;
     int chaserRandomTick = 0;
